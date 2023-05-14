@@ -4,22 +4,105 @@
  */
 package com.mycompany.automostate;
 
+import com.mycompany.auto.mo.status.Main;
+import static com.mycompany.auto.mo.status.Main.LoadTable;
+import static com.mycompany.auto.mo.status.Main.dataTable;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.geom.RoundRectangle2D;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jp Miravalles
  */
 public class adminMain extends javax.swing.JFrame {
+    Implementation im = new Implementation(); 
+    
+    static String fname;
+    static String lname;
+    static String add;
+    static String email;
+    static String contact;
+    static String car;
+    static String park;
+    static String process;
+    static String date;
     int mousepX;
     int mousepY;
     /**
      * Creates new form adminMain
      */
+    boolean a = true;
     public adminMain() {
         initComponents();
+        
+        setLocationRelativeTo(null);
+      
+        
+        
+        dataTable.getTableHeader().setFont (new Font("Monospaced", Font.PLAIN, 15));
+        dataTable.getTableHeader().setOpaque(false);
+        dataTable.getTableHeader().setBackground(new Color(255, 204, 0));
+        dataTable.getTableHeader().setForeground(new Color(0, 0, 0));
+        dataTable.setRowHeight(25);
+        LoadTable();
+    }
+    
+    public void Table( String fname,
+     String lname,
+     String add,
+     String email,
+     String contact,
+     String car,
+     String park,
+     String process,
+     String date){
+    
+        DefaultTableModel t;
+        t = (DefaultTableModel) dataTable.getModel();
+        t.addRow(new Object[]{
+            fname,
+            lname,
+            add,
+            email,
+            contact,
+            car,
+            park,
+            process,
+            date
+        });
+    }
+    public static void LoadTable(){
+        File file = new File("information.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            
+            model.setRowCount(0);
+            
+            Object[] lines = br.lines().toArray();
+            
+            for (Object line1 : lines) {
+                String[] line = line1.toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,24 +114,57 @@ public class adminMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         Header = new javax.swing.JPanel();
-        Logo = new javax.swing.JLabel();
+        iconminmaxClose = new javax.swing.JPanel();
         exitPanel = new javax.swing.JPanel();
         Exit = new javax.swing.JLabel();
         fullscreenPanel = new javax.swing.JPanel();
         Fullscreen = new javax.swing.JLabel();
         iconifyPanel = new javax.swing.JPanel();
         Iconify = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
         Menu = new javax.swing.JPanel();
         menuIcon = new javax.swing.JPanel();
         lineMenu = new javax.swing.JPanel();
         menuButton = new javax.swing.JPanel();
         menuButtonIcon = new javax.swing.JLabel();
         menuHide = new javax.swing.JPanel();
+        dashboardPanel = new javax.swing.JPanel();
+        dashboard = new javax.swing.JLabel();
+        addapplicantsPanel = new javax.swing.JPanel();
+        addApplicants = new javax.swing.JLabel();
+        addapp = new javax.swing.JPanel();
+        fnameField = new javax.swing.JTextField();
+        rfname = new javax.swing.JLabel();
+        lnameField = new javax.swing.JTextField();
+        rlname = new javax.swing.JLabel();
+        addField = new javax.swing.JTextField();
+        raddress = new javax.swing.JLabel();
+        eField = new javax.swing.JTextField();
+        remail = new javax.swing.JLabel();
+        contactField = new javax.swing.JTextField();
+        rcnumber = new javax.swing.JLabel();
+        carComboBox = new javax.swing.JComboBox<>();
+        rctcar = new javax.swing.JLabel();
+        parkComboBox = new javax.swing.JComboBox<>();
+        rspspace = new javax.swing.JLabel();
+        addcus = new javax.swing.JButton();
         dashboardView = new javax.swing.JPanel();
+        sortingPanel = new javax.swing.JPanel();
+        r1 = new javax.swing.JRadioButton();
+        r2 = new javax.swing.JRadioButton();
+        r3 = new javax.swing.JRadioButton();
+        r4 = new javax.swing.JRadioButton();
+        r5 = new javax.swing.JRadioButton();
+        sort = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dataTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1000, 650));
 
         Header.setBackground(new java.awt.Color(255, 204, 0));
         Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -63,11 +179,13 @@ public class adminMain extends javax.swing.JFrame {
                 HeaderMousePressed(evt);
             }
         });
-        Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Header.setLayout(new java.awt.BorderLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon("D:\\Jp Miravalles\\Desktop\\Auto-mo-status3.png")); // NOI18N
-        Logo.setText("jLabel3");
-        Header.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 8, 37, -1));
+        iconminmaxClose.setBackground(new java.awt.Color(255, 204, 0));
+        iconminmaxClose.setMaximumSize(new java.awt.Dimension(150, 50));
+        iconminmaxClose.setMinimumSize(new java.awt.Dimension(150, 50));
+        iconminmaxClose.setPreferredSize(new java.awt.Dimension(150, 50));
+        iconminmaxClose.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exitPanel.setBackground(new java.awt.Color(255, 204, 0));
         exitPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -107,11 +225,11 @@ public class adminMain extends javax.swing.JFrame {
         exitPanelLayout.setVerticalGroup(
             exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitPanelLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(0, 5, Short.MAX_VALUE)
                 .addComponent(Exit))
         );
 
-        Header.add(exitPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 0, -1, 49));
+        iconminmaxClose.add(exitPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
 
         fullscreenPanel.setBackground(new java.awt.Color(255, 204, 0));
         fullscreenPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -151,11 +269,11 @@ public class adminMain extends javax.swing.JFrame {
         fullscreenPanelLayout.setVerticalGroup(
             fullscreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullscreenPanelLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
                 .addComponent(Fullscreen))
         );
 
-        Header.add(fullscreenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 0, -1, 49));
+        iconminmaxClose.add(fullscreenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
 
         iconifyPanel.setBackground(new java.awt.Color(255, 204, 0));
         iconifyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -196,11 +314,18 @@ public class adminMain extends javax.swing.JFrame {
         iconifyPanelLayout.setVerticalGroup(
             iconifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconifyPanelLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(0, 5, Short.MAX_VALUE)
                 .addComponent(Iconify))
         );
 
-        Header.add(iconifyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 0, -1, 49));
+        iconminmaxClose.add(iconifyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Header.add(iconminmaxClose, java.awt.BorderLayout.LINE_END);
+
+        Logo.setFont(new java.awt.Font("Akira Expanded", 0, 18)); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Jp Miravalles\\Desktop\\Auto-mo-status3.png")); // NOI18N
+        Logo.setText("UTO-MO-STATUS");
+        Header.add(Logo, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(Header, java.awt.BorderLayout.PAGE_START);
 
@@ -232,6 +357,11 @@ public class adminMain extends javax.swing.JFrame {
         menuButton.setBackground(new java.awt.Color(255, 204, 0));
         menuButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        menuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuButtonMouseClicked(evt);
+            }
+        });
         menuButton.setLayout(new java.awt.BorderLayout());
 
         menuButtonIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -254,34 +384,307 @@ public class adminMain extends javax.swing.JFrame {
         Menu.add(menuIcon, java.awt.BorderLayout.LINE_START);
 
         menuHide.setBackground(new java.awt.Color(111, 111, 111));
+        menuHide.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout menuHideLayout = new javax.swing.GroupLayout(menuHide);
-        menuHide.setLayout(menuHideLayout);
-        menuHideLayout.setHorizontalGroup(
-            menuHideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+        dashboardPanel.setBackground(new java.awt.Color(111, 111, 111));
+        dashboardPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        dashboardPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashboardPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dashboardPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dashboardPanelMouseExited(evt);
+            }
+        });
+        dashboardPanel.setLayout(new java.awt.BorderLayout());
+
+        dashboard.setFont(new java.awt.Font("Monospaced", 1, 20)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(255, 204, 0));
+        dashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dashboard.setText("Dashboard");
+        dashboardPanel.add(dashboard, java.awt.BorderLayout.CENTER);
+
+        menuHide.add(dashboardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 50));
+
+        addapplicantsPanel.setBackground(new java.awt.Color(111, 111, 111));
+        addapplicantsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        addapplicantsPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addapplicantsPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addapplicantsPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addapplicantsPanelMouseExited(evt);
+            }
+        });
+        addapplicantsPanel.setLayout(new java.awt.BorderLayout());
+
+        addApplicants.setFont(new java.awt.Font("Monospaced", 1, 20)); // NOI18N
+        addApplicants.setForeground(new java.awt.Color(255, 204, 0));
+        addApplicants.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addApplicants.setText("Add Applicants");
+        addapplicantsPanel.add(addApplicants, java.awt.BorderLayout.CENTER);
+
+        menuHide.add(addapplicantsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 50));
+
+        fnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnameFieldActionPerformed(evt);
+            }
+        });
+
+        rfname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rfname.setForeground(new java.awt.Color(255, 204, 0));
+        rfname.setText("First Name:");
+
+        rlname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rlname.setForeground(new java.awt.Color(255, 204, 0));
+        rlname.setText("Last Name:");
+
+        raddress.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        raddress.setForeground(new java.awt.Color(255, 204, 0));
+        raddress.setText("Address:");
+
+        eField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eFieldActionPerformed(evt);
+            }
+        });
+
+        remail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        remail.setForeground(new java.awt.Color(255, 204, 0));
+        remail.setText("E-mail:");
+
+        contactField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactFieldActionPerformed(evt);
+            }
+        });
+
+        rcnumber.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rcnumber.setForeground(new java.awt.Color(255, 204, 0));
+        rcnumber.setText("Contact No.:");
+
+        carComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
+        carComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carComboBoxActionPerformed(evt);
+            }
+        });
+
+        rctcar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rctcar.setForeground(new java.awt.Color(255, 204, 0));
+        rctcar.setText("Type of Car:");
+
+        parkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
+        parkComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkComboBoxActionPerformed(evt);
+            }
+        });
+
+        rspspace.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rspspace.setForeground(new java.awt.Color(255, 204, 0));
+        rspspace.setText("Size of Parking Space:");
+
+        addcus.setBackground(new java.awt.Color(255, 204, 0));
+        addcus.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        addcus.setText("Add Applicant");
+        addcus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addcusActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addappLayout = new javax.swing.GroupLayout(addapp);
+        addapp.setLayout(addappLayout);
+        addappLayout.setHorizontalGroup(
+            addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addappLayout.createSequentialGroup()
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addappLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addappLayout.createSequentialGroup()
+                                    .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(rctcar)
+                                        .addComponent(rcnumber))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(carComboBox, 0, 250, Short.MAX_VALUE)
+                                        .addComponent(contactField)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addappLayout.createSequentialGroup()
+                                    .addComponent(rspspace)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(parkComboBox, 0, 170, Short.MAX_VALUE)))
+                            .addGroup(addappLayout.createSequentialGroup()
+                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rfname)
+                                    .addComponent(rlname))
+                                .addGap(18, 18, 18)
+                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(addappLayout.createSequentialGroup()
+                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(raddress)
+                                    .addComponent(remail))
+                                .addGap(45, 45, 45)
+                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(addappLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(addcus)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        menuHideLayout.setVerticalGroup(
-            menuHideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+        addappLayout.setVerticalGroup(
+            addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addappLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rfname)
+                    .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rlname))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(raddress)
+                    .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remail)
+                    .addComponent(eField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rcnumber)
+                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rctcar)
+                    .addComponent(carComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rspspace)
+                    .addComponent(parkComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(addcus)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        menuHide.add(addapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 110, 430, 360));
 
         Menu.add(menuHide, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(Menu, java.awt.BorderLayout.LINE_START);
 
         dashboardView.setBackground(new java.awt.Color(51, 51, 51));
+        dashboardView.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout dashboardViewLayout = new javax.swing.GroupLayout(dashboardView);
-        dashboardView.setLayout(dashboardViewLayout);
-        dashboardViewLayout.setHorizontalGroup(
-            dashboardViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
-        );
-        dashboardViewLayout.setVerticalGroup(
-            dashboardViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
+        sortingPanel.setBackground(new java.awt.Color(51, 51, 51));
+        sortingPanel.setPreferredSize(new java.awt.Dimension(300, 451));
+        sortingPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        r1.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(r1);
+        r1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        r1.setForeground(new java.awt.Color(255, 204, 0));
+        r1.setText("Sort by First Name");
+        r1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r1ActionPerformed(evt);
+            }
+        });
+        sortingPanel.add(r1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        r2.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(r2);
+        r2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        r2.setForeground(new java.awt.Color(255, 204, 0));
+        r2.setText("Sort by Last Name");
+        r2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r2ActionPerformed(evt);
+            }
+        });
+        sortingPanel.add(r2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        r3.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(r3);
+        r3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        r3.setForeground(new java.awt.Color(255, 204, 0));
+        r3.setText("Sort by Type of Car");
+        r3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r3ActionPerformed(evt);
+            }
+        });
+        sortingPanel.add(r3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        r4.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(r4);
+        r4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        r4.setForeground(new java.awt.Color(255, 204, 0));
+        r4.setText("Sort by Size of Park Space");
+        r4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r4ActionPerformed(evt);
+            }
+        });
+        sortingPanel.add(r4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        r5.setBackground(new java.awt.Color(51, 51, 51));
+        buttonGroup1.add(r5);
+        r5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        r5.setForeground(new java.awt.Color(255, 204, 0));
+        r5.setText("Sort by Date");
+        r5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r5ActionPerformed(evt);
+            }
+        });
+        sortingPanel.add(r5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        sort.setFont(new java.awt.Font("Monospaced", 1, 20)); // NOI18N
+        sort.setForeground(new java.awt.Color(255, 204, 0));
+        sort.setText("SORT TABLE");
+        sortingPanel.add(sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        dashboardView.add(sortingPanel, java.awt.BorderLayout.LINE_START);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        dataTable.setBackground(new java.awt.Color(51, 51, 51));
+        dataTable.setForeground(new java.awt.Color(255, 204, 0));
+        dataTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "First Name", "Last Name", "Address", "Email", "Contact No.", "Type of Car", "Size of Park Space", "Status", "Date"
+            }
+        ));
+        dataTable.setFocusable(false);
+        dataTable.setGridColor(new java.awt.Color(0, 0, 0));
+        dataTable.setRowHeight(25);
+        dataTable.setSelectionBackground(new java.awt.Color(255, 204, 0));
+        dataTable.setShowHorizontalLines(true);
+        dataTable.setShowVerticalLines(true);
+        dataTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(dataTable);
+
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        dashboardView.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(dashboardView, java.awt.BorderLayout.CENTER);
 
@@ -291,6 +694,16 @@ public class adminMain extends javax.swing.JFrame {
     public void changecolor (JPanel hover, Color rand){
         hover.setBackground(rand);
     }    
+    
+    public void hideShow (JPanel menushowhide, boolean dashboard){
+        if (dashboard == true) {
+            menushowhide.setPreferredSize(new Dimension(50, menushowhide.getHeight()));
+        }
+        else{
+            menushowhide.setPreferredSize(new Dimension(270, menushowhide.getHeight()));
+        }
+    }
+    
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
@@ -308,7 +721,7 @@ public class adminMain extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMouseClicked
 
     private void FullscreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseClicked
-        if (this.getExtendedState()!=adminMain.MAXIMIZED_BOTH){
+        if (this.getExtendedState()!= adminMain.MAXIMIZED_BOTH){
             this.setExtendedState(adminMain.MAXIMIZED_BOTH);
         }
         else {
@@ -373,12 +786,244 @@ public class adminMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonIconMouseEntered
 
     private void menuButtonIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonIconMouseClicked
-        // TODO add your handling code here:
+        if (a==true){
+            hideShow (Menu, a);
+            SwingUtilities.updateComponentTreeUI(this);
+            a=false;
+        }
+        else {
+            hideShow (Menu, a);
+            SwingUtilities.updateComponentTreeUI(this);
+            a=true;
+        }
     }//GEN-LAST:event_menuButtonIconMouseClicked
-
     private void menuButtonIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonIconMouseExited
         changecolor(menuButton, new Color (255, 204, 0));
     }//GEN-LAST:event_menuButtonIconMouseExited
+
+    private void menuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuButtonMouseClicked
+
+    private void dashboardPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboardPanelMouseClicked
+
+    private void dashboardPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardPanelMouseEntered
+        changecolor(dashboardPanel, new Color (102, 102, 102));
+    }//GEN-LAST:event_dashboardPanelMouseEntered
+
+    private void dashboardPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardPanelMouseExited
+        changecolor(dashboardPanel, new Color (111, 111, 111));
+    }//GEN-LAST:event_dashboardPanelMouseExited
+
+    private void addapplicantsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addapplicantsPanelMouseClicked
+
+    private void addapplicantsPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseEntered
+        changecolor(addapplicantsPanel, new Color (102, 102, 102));
+    }//GEN-LAST:event_addapplicantsPanelMouseEntered
+
+    private void addapplicantsPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseExited
+        changecolor(addapplicantsPanel, new Color (111, 111, 111));
+    }//GEN-LAST:event_addapplicantsPanelMouseExited
+
+    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
+        if(r1.isSelected()){
+            im.readInfo();
+            im.sortFname(im.getInfo());
+
+        }
+        File file = new File("insert.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_r1ActionPerformed
+
+    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
+        if(r2.isSelected()){
+            im.readInfo();
+            im.sortLname(im.getInfo());
+
+        }
+        File file = new File("insert2.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r2ActionPerformed
+
+    private void r3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r3ActionPerformed
+        if(r3.isSelected()){
+            im.readInfo();
+            im.sortAdd(im.getInfo());
+
+        }
+        File file = new File("insert3.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r3ActionPerformed
+
+    private void r4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r4ActionPerformed
+        if(r4.isSelected()){
+            im.readInfo();
+            im.sortCar(im.getInfo());
+
+        }
+        File file = new File("insert4.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r4ActionPerformed
+
+    private void r5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r5ActionPerformed
+        if(r5.isSelected()){
+            im.readInfo();
+            im.sortDate(im.getInfo());
+
+        }
+        File file = new File("insert5.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r5ActionPerformed
+
+    private void fnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnameFieldActionPerformed
+
+    private void eFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eFieldActionPerformed
+
+    private void contactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactFieldActionPerformed
+
+    private void carComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carComboBoxActionPerformed
+        // TODO add your handling code here:
+        Object sValue = carComboBox.getSelectedItem();
+        String car = sValue.toString();
+    }//GEN-LAST:event_carComboBoxActionPerformed
+
+    private void parkComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkComboBoxActionPerformed
+        // TODO add your handling code here:
+        Object sValue1 = parkComboBox.getSelectedItem();
+        String park = sValue1.toString();
+    }//GEN-LAST:event_parkComboBoxActionPerformed
+
+    private void addcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addcusActionPerformed
+
+        fname = fnameField.getText();
+        lname = lnameField.getText();
+        add = addField.getText();
+        email = eField.getText();
+        contact = contactField.getText();
+        car = (String) carComboBox.getSelectedItem();
+        park = (String) parkComboBox.getSelectedItem();
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        Date curdate = new Date();
+        date = dateformat.format(curdate);
+
+        if (car.equals(park)) {
+            process = ("Passed");
+
+        } else if (car.equals("Sedan") && (park.equals("Van") || park.equals("Truck"))) {
+            process = ("Passed");
+
+        } else if (car.equals("Van") && park.equals("Truck")) {
+            process = ("Passed");
+
+        } else if (car.equals("Motorcycle") && (park.equals("Sedan") || park.equals("Van") || park.equals("Truck"))) {
+            process = ("Passed");
+
+        } else {
+            process = ("Failed");
+
+        }
+
+        im.setFname(fname);
+        im.setLname(lname);
+        im.setAdd(add);
+        im.setEmail(email);
+        im.setContact(contact);
+        im.setCar(car);
+        im.setPark(park);
+        im.setProcess(process);
+        im.setDate(date);
+
+        im.saveInfo();
+        JOptionPane.showMessageDialog(this,"Registered Successfully!");
+
+        Table( fname,
+            lname,
+            add,
+            email,
+            contact,
+            car,
+            park,
+            process,
+            date
+        );
+
+        fnameField.setText("");
+        lnameField.setText("");
+        addField.setText("");
+        eField.setText("");
+        contactField.setText("");
+    }//GEN-LAST:event_addcusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,14 +1067,50 @@ public class adminMain extends javax.swing.JFrame {
     private javax.swing.JLabel Iconify;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel Menu;
+    private javax.swing.JLabel addApplicants;
+    private static javax.swing.JTextField addField;
+    private javax.swing.JPanel addapp;
+    private javax.swing.JPanel addapplicantsPanel;
+    private javax.swing.JButton addcus;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private static javax.swing.JComboBox<String> carComboBox;
+    private static javax.swing.JTextField contactField;
+    private javax.swing.JLabel dashboard;
+    private javax.swing.JPanel dashboardPanel;
     private javax.swing.JPanel dashboardView;
+    public static javax.swing.JTable dataTable;
+    private static javax.swing.JTextField eField;
     private javax.swing.JPanel exitPanel;
+    private static javax.swing.JTextField fnameField;
     private javax.swing.JPanel fullscreenPanel;
     private javax.swing.JPanel iconifyPanel;
+    private javax.swing.JPanel iconminmaxClose;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel lineMenu;
+    private static javax.swing.JTextField lnameField;
     private javax.swing.JPanel menuButton;
     private javax.swing.JLabel menuButtonIcon;
     private javax.swing.JPanel menuHide;
     private javax.swing.JPanel menuIcon;
+    private static javax.swing.JComboBox<String> parkComboBox;
+    private javax.swing.JRadioButton r1;
+    private javax.swing.JRadioButton r2;
+    private javax.swing.JRadioButton r3;
+    private javax.swing.JRadioButton r4;
+    private javax.swing.JRadioButton r5;
+    private javax.swing.JLabel raddress;
+    private javax.swing.JLabel rcnumber;
+    private javax.swing.JLabel rctcar;
+    private javax.swing.JLabel remail;
+    private javax.swing.JLabel rfname;
+    private javax.swing.JLabel rlname;
+    private javax.swing.JLabel rspspace;
+    private javax.swing.JLabel sort;
+    private javax.swing.JPanel sortingPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void hideshow(JPanel Menu, boolean a) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

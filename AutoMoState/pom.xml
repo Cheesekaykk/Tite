@@ -10,6 +10,11 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE130</version>
         </dependency>
+        <dependency>
+            <groupId>com.mycompany.auto.mo.status</groupId>
+            <artifactId>auto-mo-status</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
