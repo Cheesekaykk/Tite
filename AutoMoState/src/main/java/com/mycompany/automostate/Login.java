@@ -260,6 +260,7 @@ public class Login extends javax.swing.JFrame {
         Background.setBounds(0, 30, 300, 370);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void topPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseClicked

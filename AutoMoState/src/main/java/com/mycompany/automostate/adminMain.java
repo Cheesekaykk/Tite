@@ -86,7 +86,7 @@ public class adminMain extends javax.swing.JFrame {
             date
         });
     }
-    public static void LoadTable(){
+    public void LoadTable(){
         File file = new File("information.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -134,6 +134,19 @@ public class adminMain extends javax.swing.JFrame {
         dashboard = new javax.swing.JLabel();
         addapplicantsPanel = new javax.swing.JPanel();
         addApplicants = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        mainTabs = new javax.swing.JTabbedPane();
+        dashboardView = new javax.swing.JPanel();
+        sortingPanel = new javax.swing.JPanel();
+        r1 = new javax.swing.JRadioButton();
+        r2 = new javax.swing.JRadioButton();
+        r3 = new javax.swing.JRadioButton();
+        r4 = new javax.swing.JRadioButton();
+        r5 = new javax.swing.JRadioButton();
+        sort = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dataTable = new javax.swing.JTable();
         addapp = new javax.swing.JPanel();
         fnameField = new javax.swing.JTextField();
         rfname = new javax.swing.JLabel();
@@ -150,17 +163,7 @@ public class adminMain extends javax.swing.JFrame {
         parkComboBox = new javax.swing.JComboBox<>();
         rspspace = new javax.swing.JLabel();
         addcus = new javax.swing.JButton();
-        dashboardView = new javax.swing.JPanel();
-        sortingPanel = new javax.swing.JPanel();
-        r1 = new javax.swing.JRadioButton();
-        r2 = new javax.swing.JRadioButton();
-        r3 = new javax.swing.JRadioButton();
-        r4 = new javax.swing.JRadioButton();
-        r5 = new javax.swing.JRadioButton();
-        sort = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        dataTable = new javax.swing.JTable();
+        addApplicants1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -432,159 +435,15 @@ public class adminMain extends javax.swing.JFrame {
 
         menuHide.add(addapplicantsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 50));
 
-        fnameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameFieldActionPerformed(evt);
-            }
-        });
-
-        rfname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        rfname.setForeground(new java.awt.Color(255, 204, 0));
-        rfname.setText("First Name:");
-
-        rlname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        rlname.setForeground(new java.awt.Color(255, 204, 0));
-        rlname.setText("Last Name:");
-
-        raddress.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        raddress.setForeground(new java.awt.Color(255, 204, 0));
-        raddress.setText("Address:");
-
-        eField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eFieldActionPerformed(evt);
-            }
-        });
-
-        remail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        remail.setForeground(new java.awt.Color(255, 204, 0));
-        remail.setText("E-mail:");
-
-        contactField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactFieldActionPerformed(evt);
-            }
-        });
-
-        rcnumber.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        rcnumber.setForeground(new java.awt.Color(255, 204, 0));
-        rcnumber.setText("Contact No.:");
-
-        carComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
-        carComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carComboBoxActionPerformed(evt);
-            }
-        });
-
-        rctcar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        rctcar.setForeground(new java.awt.Color(255, 204, 0));
-        rctcar.setText("Type of Car:");
-
-        parkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
-        parkComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                parkComboBoxActionPerformed(evt);
-            }
-        });
-
-        rspspace.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        rspspace.setForeground(new java.awt.Color(255, 204, 0));
-        rspspace.setText("Size of Parking Space:");
-
-        addcus.setBackground(new java.awt.Color(255, 204, 0));
-        addcus.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        addcus.setText("Add Applicant");
-        addcus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addcusActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout addappLayout = new javax.swing.GroupLayout(addapp);
-        addapp.setLayout(addappLayout);
-        addappLayout.setHorizontalGroup(
-            addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addappLayout.createSequentialGroup()
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addappLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addappLayout.createSequentialGroup()
-                                    .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(rctcar)
-                                        .addComponent(rcnumber))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(carComboBox, 0, 250, Short.MAX_VALUE)
-                                        .addComponent(contactField)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addappLayout.createSequentialGroup()
-                                    .addComponent(rspspace)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(parkComboBox, 0, 170, Short.MAX_VALUE)))
-                            .addGroup(addappLayout.createSequentialGroup()
-                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rfname)
-                                    .addComponent(rlname))
-                                .addGap(18, 18, 18)
-                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(addappLayout.createSequentialGroup()
-                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(raddress)
-                                    .addComponent(remail))
-                                .addGap(45, 45, 45)
-                                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(addappLayout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(addcus)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        addappLayout.setVerticalGroup(
-            addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addappLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rfname)
-                    .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rlname))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(raddress)
-                    .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(remail)
-                    .addComponent(eField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rcnumber)
-                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rctcar)
-                    .addComponent(carComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addappLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rspspace)
-                    .addComponent(parkComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(addcus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        menuHide.add(addapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 110, 430, 360));
-
         Menu.add(menuHide, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(Menu, java.awt.BorderLayout.LINE_START);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        mainTabs.setBackground(new java.awt.Color(51, 51, 51));
+        mainTabs.setForeground(new java.awt.Color(51, 51, 51));
 
         dashboardView.setBackground(new java.awt.Color(51, 51, 51));
         dashboardView.setLayout(new java.awt.BorderLayout());
@@ -686,7 +545,122 @@ public class adminMain extends javax.swing.JFrame {
 
         dashboardView.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(dashboardView, java.awt.BorderLayout.CENTER);
+        mainTabs.addTab("", dashboardView);
+
+        addapp.setBackground(new java.awt.Color(51, 51, 51));
+        addapp.setLayout(null);
+
+        fnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnameFieldActionPerformed(evt);
+            }
+        });
+        addapp.add(fnameField);
+        fnameField.setBounds(300, 100, 250, 22);
+
+        rfname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rfname.setForeground(new java.awt.Color(255, 204, 0));
+        rfname.setText("First Name:");
+        addapp.add(rfname);
+        rfname.setBounds(150, 100, 100, 20);
+        addapp.add(lnameField);
+        lnameField.setBounds(300, 140, 250, 22);
+
+        rlname.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rlname.setForeground(new java.awt.Color(255, 204, 0));
+        rlname.setText("Last Name:");
+        addapp.add(rlname);
+        rlname.setBounds(150, 140, 100, 20);
+        addapp.add(addField);
+        addField.setBounds(300, 180, 250, 22);
+
+        raddress.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        raddress.setForeground(new java.awt.Color(255, 204, 0));
+        raddress.setText("Address:");
+        addapp.add(raddress);
+        raddress.setBounds(150, 180, 70, 20);
+
+        eField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eFieldActionPerformed(evt);
+            }
+        });
+        addapp.add(eField);
+        eField.setBounds(300, 220, 250, 22);
+
+        remail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        remail.setForeground(new java.awt.Color(255, 204, 0));
+        remail.setText("E-mail:");
+        addapp.add(remail);
+        remail.setBounds(150, 220, 70, 20);
+
+        contactField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactFieldActionPerformed(evt);
+            }
+        });
+        addapp.add(contactField);
+        contactField.setBounds(300, 260, 250, 22);
+
+        rcnumber.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rcnumber.setForeground(new java.awt.Color(255, 204, 0));
+        rcnumber.setText("Contact No.:");
+        addapp.add(rcnumber);
+        rcnumber.setBounds(150, 260, 110, 20);
+
+        carComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
+        carComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carComboBoxActionPerformed(evt);
+            }
+        });
+        addapp.add(carComboBox);
+        carComboBox.setBounds(300, 300, 250, 22);
+
+        rctcar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rctcar.setForeground(new java.awt.Color(255, 204, 0));
+        rctcar.setText("Type of Car:");
+        addapp.add(rctcar);
+        rctcar.setBounds(150, 300, 110, 20);
+
+        parkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Van", "Truck", "Motorcycle" }));
+        parkComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkComboBoxActionPerformed(evt);
+            }
+        });
+        addapp.add(parkComboBox);
+        parkComboBox.setBounds(380, 340, 170, 22);
+
+        rspspace.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        rspspace.setForeground(new java.awt.Color(255, 204, 0));
+        rspspace.setText("Size of Parking Space:");
+        addapp.add(rspspace);
+        rspspace.setBounds(150, 340, 200, 20);
+
+        addcus.setBackground(new java.awt.Color(255, 204, 0));
+        addcus.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        addcus.setText("Add Applicant");
+        addcus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addcusActionPerformed(evt);
+            }
+        });
+        addapp.add(addcus);
+        addcus.setBounds(270, 410, 150, 27);
+
+        addApplicants1.setFont(new java.awt.Font("Monospaced", 1, 20)); // NOI18N
+        addApplicants1.setForeground(new java.awt.Color(255, 204, 0));
+        addApplicants1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addApplicants1.setText("Add Applicants");
+        addapp.add(addApplicants1);
+        addApplicants1.setBounds(260, 40, 168, 27);
+
+        mainTabs.addTab("", addapp);
+
+        jPanel2.add(mainTabs, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -704,83 +678,6 @@ public class adminMain extends javax.swing.JFrame {
         }
     }
     
-    private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
-        int kordinatX = evt.getXOnScreen();
-        int kordinatY = evt.getYOnScreen();
-        
-        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
-    }//GEN-LAST:event_HeaderMouseDragged
-
-    private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
-        mousepX = evt.getX();
-        mousepY = evt.getY();
-    }//GEN-LAST:event_HeaderMousePressed
-
-    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_ExitMouseClicked
-
-    private void FullscreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseClicked
-        if (this.getExtendedState()!= adminMain.MAXIMIZED_BOTH){
-            this.setExtendedState(adminMain.MAXIMIZED_BOTH);
-        }
-        else {
-            this.setExtendedState(adminMain.NORMAL);
-        }
-    }//GEN-LAST:event_FullscreenMouseClicked
-
-    private void IconifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseClicked
-        this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_IconifyMouseClicked
-
-    private void exitPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseEntered
-        changecolor(exitPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_exitPanelMouseEntered
-
-    private void exitPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseExited
-        changecolor(exitPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_exitPanelMouseExited
-
-    private void fullscreenPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullscreenPanelMouseEntered
-        changecolor(fullscreenPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_fullscreenPanelMouseEntered
-
-    private void fullscreenPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullscreenPanelMouseExited
-        changecolor(fullscreenPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_fullscreenPanelMouseExited
-
-    private void iconifyPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconifyPanelMouseEntered
-        changecolor(iconifyPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_iconifyPanelMouseEntered
-
-    private void iconifyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconifyPanelMouseExited
-        changecolor(iconifyPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_iconifyPanelMouseExited
-
-    private void FullscreenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseEntered
-        changecolor(fullscreenPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_FullscreenMouseEntered
-
-    private void FullscreenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseExited
-        changecolor(fullscreenPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_FullscreenMouseExited
-
-    private void IconifyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseEntered
-        changecolor(iconifyPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_IconifyMouseEntered
-
-    private void IconifyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseExited
-        changecolor(iconifyPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_IconifyMouseExited
-
-    private void ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseEntered
-        changecolor(exitPanel, new Color (255, 217, 67));
-    }//GEN-LAST:event_ExitMouseEntered
-
-    private void ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseExited
-        changecolor(exitPanel, new Color (255, 204, 0));
-    }//GEN-LAST:event_ExitMouseExited
-
     private void menuButtonIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonIconMouseEntered
         changecolor(menuButton, new Color (255, 217, 67));
     }//GEN-LAST:event_menuButtonIconMouseEntered
@@ -806,7 +703,7 @@ public class adminMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonMouseClicked
 
     private void dashboardPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardPanelMouseClicked
-        // TODO add your handling code here:
+        mainTabs.setSelectedIndex(0);
     }//GEN-LAST:event_dashboardPanelMouseClicked
 
     private void dashboardPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardPanelMouseEntered
@@ -818,7 +715,7 @@ public class adminMain extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboardPanelMouseExited
 
     private void addapplicantsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseClicked
-        // TODO add your handling code here:
+        mainTabs.setSelectedIndex(1);
     }//GEN-LAST:event_addapplicantsPanelMouseClicked
 
     private void addapplicantsPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseEntered
@@ -828,95 +725,6 @@ public class adminMain extends javax.swing.JFrame {
     private void addapplicantsPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addapplicantsPanelMouseExited
         changecolor(addapplicantsPanel, new Color (111, 111, 111));
     }//GEN-LAST:event_addapplicantsPanelMouseExited
-
-    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
-        if(r1.isSelected()){
-            im.readInfo();
-            im.sortFname(im.getInfo());
-
-        }
-        File file = new File("insert.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
-            model.setRowCount(0);
-            Object[] lines = br.lines().toArray();
-
-            for(int i = 0; i < lines.length ; i++){
-                String[] line = lines[i].toString().trim().split(", ");
-                model.addRow(line);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_r1ActionPerformed
-
-    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
-        if(r2.isSelected()){
-            im.readInfo();
-            im.sortLname(im.getInfo());
-
-        }
-        File file = new File("insert2.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
-            model.setRowCount(0);
-            Object[] lines = br.lines().toArray();
-
-            for(int i = 0; i < lines.length ; i++){
-                String[] line = lines[i].toString().trim().split(", ");
-                model.addRow(line);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_r2ActionPerformed
-
-    private void r3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r3ActionPerformed
-        if(r3.isSelected()){
-            im.readInfo();
-            im.sortAdd(im.getInfo());
-
-        }
-        File file = new File("insert3.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
-            model.setRowCount(0);
-            Object[] lines = br.lines().toArray();
-
-            for(int i = 0; i < lines.length ; i++){
-                String[] line = lines[i].toString().trim().split(", ");
-                model.addRow(line);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_r3ActionPerformed
-
-    private void r4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r4ActionPerformed
-        if(r4.isSelected()){
-            im.readInfo();
-            im.sortCar(im.getInfo());
-
-        }
-        File file = new File("insert4.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
-            model.setRowCount(0);
-            Object[] lines = br.lines().toArray();
-
-            for(int i = 0; i < lines.length ; i++){
-                String[] line = lines[i].toString().trim().split(", ");
-                model.addRow(line);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_r4ActionPerformed
 
     private void r5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r5ActionPerformed
         if(r5.isSelected()){
@@ -940,29 +748,93 @@ public class adminMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_r5ActionPerformed
 
-    private void fnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnameFieldActionPerformed
+    private void r4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r4ActionPerformed
+        if(r4.isSelected()){
+            im.readInfo();
+            im.sortCar(im.getInfo());
 
-    private void eFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eFieldActionPerformed
+        }
+        File file = new File("insert4.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
 
-    private void contactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactFieldActionPerformed
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r4ActionPerformed
 
-    private void carComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carComboBoxActionPerformed
-        // TODO add your handling code here:
-        Object sValue = carComboBox.getSelectedItem();
-        String car = sValue.toString();
-    }//GEN-LAST:event_carComboBoxActionPerformed
+    private void r3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r3ActionPerformed
+        if(r3.isSelected()){
+            im.readInfo();
+            im.sortAdd(im.getInfo());
 
-    private void parkComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkComboBoxActionPerformed
-        // TODO add your handling code here:
-        Object sValue1 = parkComboBox.getSelectedItem();
-        String park = sValue1.toString();
-    }//GEN-LAST:event_parkComboBoxActionPerformed
+        }
+        File file = new File("insert3.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r3ActionPerformed
+
+    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
+        if(r2.isSelected()){
+            im.readInfo();
+            im.sortLname(im.getInfo());
+
+        }
+        File file = new File("insert2.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r2ActionPerformed
+
+    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
+        if(r1.isSelected()){
+            im.readInfo();
+            im.sortFname(im.getInfo());
+
+        }
+        File file = new File("insert.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+            model.setRowCount(0);
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length ; i++){
+                String[] line = lines[i].toString().trim().split(", ");
+                model.addRow(line);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_r1ActionPerformed
 
     private void addcusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addcusActionPerformed
 
@@ -1025,6 +897,107 @@ public class adminMain extends javax.swing.JFrame {
         contactField.setText("");
     }//GEN-LAST:event_addcusActionPerformed
 
+    private void parkComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkComboBoxActionPerformed
+        // TODO add your handling code here:
+        Object sValue1 = parkComboBox.getSelectedItem();
+        String park = sValue1.toString();
+    }//GEN-LAST:event_parkComboBoxActionPerformed
+
+    private void carComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carComboBoxActionPerformed
+        // TODO add your handling code here:
+        Object sValue = carComboBox.getSelectedItem();
+        String car = sValue.toString();
+    }//GEN-LAST:event_carComboBoxActionPerformed
+
+    private void contactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactFieldActionPerformed
+
+    private void eFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eFieldActionPerformed
+
+    private void fnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnameFieldActionPerformed
+
+    private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
+        mousepX = evt.getX();
+        mousepY = evt.getY();
+    }//GEN-LAST:event_HeaderMousePressed
+
+    private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
+        int kordinatX = evt.getXOnScreen();
+        int kordinatY = evt.getYOnScreen();
+
+        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
+    }//GEN-LAST:event_HeaderMouseDragged
+
+    private void iconifyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconifyPanelMouseExited
+        changecolor(iconifyPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_iconifyPanelMouseExited
+
+    private void iconifyPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconifyPanelMouseEntered
+        changecolor(iconifyPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_iconifyPanelMouseEntered
+
+    private void IconifyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseExited
+        changecolor(iconifyPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_IconifyMouseExited
+
+    private void IconifyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseEntered
+        changecolor(iconifyPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_IconifyMouseEntered
+
+    private void IconifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconifyMouseClicked
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_IconifyMouseClicked
+
+    private void fullscreenPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullscreenPanelMouseExited
+        changecolor(fullscreenPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_fullscreenPanelMouseExited
+
+    private void fullscreenPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullscreenPanelMouseEntered
+        changecolor(fullscreenPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_fullscreenPanelMouseEntered
+
+    private void FullscreenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseExited
+        changecolor(fullscreenPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_FullscreenMouseExited
+
+    private void FullscreenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseEntered
+        changecolor(fullscreenPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_FullscreenMouseEntered
+
+    private void FullscreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FullscreenMouseClicked
+        if (this.getExtendedState()!= adminMain.MAXIMIZED_BOTH){
+            this.setExtendedState(adminMain.MAXIMIZED_BOTH);
+        }
+        else {
+            this.setExtendedState(adminMain.NORMAL);
+        }
+    }//GEN-LAST:event_FullscreenMouseClicked
+
+    private void exitPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseExited
+        changecolor(exitPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_exitPanelMouseExited
+
+    private void exitPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseEntered
+        changecolor(exitPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_exitPanelMouseEntered
+
+    private void ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseExited
+        changecolor(exitPanel, new Color (255, 204, 0));
+    }//GEN-LAST:event_ExitMouseExited
+
+    private void ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseEntered
+        changecolor(exitPanel, new Color (255, 217, 67));
+    }//GEN-LAST:event_ExitMouseEntered
+
+    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_ExitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1068,32 +1041,35 @@ public class adminMain extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel addApplicants;
-    private static javax.swing.JTextField addField;
+    private javax.swing.JLabel addApplicants1;
+    private javax.swing.JTextField addField;
     private javax.swing.JPanel addapp;
     private javax.swing.JPanel addapplicantsPanel;
     private javax.swing.JButton addcus;
     private javax.swing.ButtonGroup buttonGroup1;
-    private static javax.swing.JComboBox<String> carComboBox;
-    private static javax.swing.JTextField contactField;
+    private javax.swing.JComboBox<String> carComboBox;
+    private javax.swing.JTextField contactField;
     private javax.swing.JLabel dashboard;
     private javax.swing.JPanel dashboardPanel;
     private javax.swing.JPanel dashboardView;
     public static javax.swing.JTable dataTable;
-    private static javax.swing.JTextField eField;
+    private javax.swing.JTextField eField;
     private javax.swing.JPanel exitPanel;
-    private static javax.swing.JTextField fnameField;
+    private javax.swing.JTextField fnameField;
     private javax.swing.JPanel fullscreenPanel;
     private javax.swing.JPanel iconifyPanel;
     private javax.swing.JPanel iconminmaxClose;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel lineMenu;
-    private static javax.swing.JTextField lnameField;
+    private javax.swing.JTextField lnameField;
+    private javax.swing.JTabbedPane mainTabs;
     private javax.swing.JPanel menuButton;
     private javax.swing.JLabel menuButtonIcon;
     private javax.swing.JPanel menuHide;
     private javax.swing.JPanel menuIcon;
-    private static javax.swing.JComboBox<String> parkComboBox;
+    private javax.swing.JComboBox<String> parkComboBox;
     private javax.swing.JRadioButton r1;
     private javax.swing.JRadioButton r2;
     private javax.swing.JRadioButton r3;
